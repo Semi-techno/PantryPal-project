@@ -84,32 +84,32 @@ export default function RecipeModal({ open, onClose, items = [], onHistoryChange
   const availableCount = items.filter((it) => it?.qtyValue === undefined || it.qtyValue > 0).length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm" onClick={handleClose} aria-hidden="true" />
 
       {/* Dialog */}
       <div
-        className="relative z-10 w-full max-w-2xl max-h-[90vh] flex flex-col bg-surface rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
+        className="relative z-10 w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col bg-surface rounded-t-2xl sm:rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Generate recipes from your pantry"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/50 bg-surface-container-low">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-on-primary">
-              <Icon name="skillet" className="text-[22px]" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-outline-variant/50 bg-surface-container-low">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary text-on-primary shrink-0">
+              <Icon name="skillet" className="text-[20px] sm:text-[22px]" />
             </span>
             <div>
-              <h2 className="text-title-md font-title-md text-on-surface leading-tight">Recipe Ideas</h2>
-              <p className="text-body-sm font-body-sm text-on-surface-variant">
+              <h2 className="text-title-sm sm:text-title-md font-bold text-on-surface leading-tight">Recipe Ideas</h2>
+              <p className="text-xs sm:text-body-sm text-on-surface-variant">
                 Cook something with what's in your pantry — we flag anything you're missing.
               </p>
             </div>
           </div>
           <button
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
+            className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
             onClick={handleClose}
             aria-label="Close"
             type="button"
@@ -119,7 +119,7 @@ export default function RecipeModal({ open, onClose, items = [], onHistoryChange
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-5">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5">
           {/* Step: idle */}
           {phase === 'idle' && (
             <div className="space-y-5">
@@ -228,9 +228,9 @@ export default function RecipeModal({ open, onClose, items = [], onHistoryChange
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 px-6 py-4 border-t border-outline-variant/50 bg-surface-container-low">
+        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-outline-variant/50 bg-surface-container-low">
           <button
-            className="px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-on-surface-variant hover:bg-surface-container transition-colors"
+            className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-colors"
             onClick={handleClose}
             type="button"
           >
@@ -239,12 +239,12 @@ export default function RecipeModal({ open, onClose, items = [], onHistoryChange
 
           {(phase === 'idle' || phase === 'results') && (
             <button
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-title-sm font-title-sm transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-xs sm:text-title-sm font-semibold transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
               onClick={handleGenerate}
               disabled={availableCount === 0}
               type="button"
             >
-              <Icon name="auto_awesome" className="text-[18px]" />
+              <Icon name="auto_awesome" className="text-[16px] sm:text-[18px]" />
               {phase === 'results' ? 'Regenerate' : 'Generate Recipes'}
             </button>
           )}

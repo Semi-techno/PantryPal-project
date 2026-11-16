@@ -7,7 +7,7 @@ const filledStar = { fontVariationSettings: "'FILL' 1" };
  */
 export default function ShowcasePanel() {
   return (
-    <section className="relative flex w-full lg:w-[52%] xl:w-[55%] min-h-[520px] lg:min-h-screen bg-tertiary overflow-hidden items-center justify-center p-6 sm:p-10 lg:p-12 xl:p-16">
+    <section className="hidden lg:flex relative w-full lg:w-[52%] xl:w-[55%] min-h-screen bg-tertiary overflow-hidden items-center justify-center p-6 sm:p-10 lg:p-12 xl:p-16">
       {/* Kitchen hero background */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out hover:scale-105"
