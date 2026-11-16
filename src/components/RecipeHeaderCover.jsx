@@ -179,14 +179,14 @@ export default function RecipeHeaderCover({ recipe, expiringFirst = false, class
 
   return (
     <div
-      className={`relative h-28 sm:h-36 w-full rounded-t-xl overflow-hidden bg-gradient-to-br ${theme.gradient} ${className}`}
+      className={`relative h-40 w-full rounded-t-xl overflow-hidden bg-gradient-to-br ${theme.gradient} ${className}`}
     >
       {/* Subtle geometric watermark accents */}
       <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden="true">
         <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/30" />
         <div className="absolute -bottom-10 -left-6 w-28 h-28 rounded-full bg-white/20" />
         <Accent
-          className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 w-16 h-16 sm:w-20 sm:h-20 text-white/40"
+          className="absolute bottom-3 right-4 w-20 h-20 text-white/40"
           strokeWidth={1.25}
           aria-hidden="true"
         />
@@ -194,8 +194,8 @@ export default function RecipeHeaderCover({ recipe, expiringFirst = false, class
 
       {/* Centered main icon with circular backdrop */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="p-2 sm:p-3 bg-white/70 backdrop-blur-sm rounded-full shadow-sm">
-          <Icon className={`w-8 h-8 sm:w-10 sm:h-10 ${theme.iconColor}`} strokeWidth={1.75} aria-hidden="true" />
+        <span className="p-3 bg-white/70 backdrop-blur-sm rounded-full shadow-sm">
+          <Icon className={`w-10 h-10 ${theme.iconColor}`} strokeWidth={1.75} aria-hidden="true" />
         </span>
       </div>
 

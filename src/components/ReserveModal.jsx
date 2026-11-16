@@ -66,28 +66,28 @@ export default function ReserveModal({ open, item, onClose, onReserve, onClear, 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       <div className="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
 
       <div
-        className="relative z-10 w-full max-w-md max-h-[92vh] sm:max-h-[90vh] flex flex-col bg-surface rounded-t-2xl sm:rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
+        className="relative z-10 w-full max-w-md flex flex-col bg-surface rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Reserve ingredient"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-outline-variant/50 bg-surface-container-low">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary text-on-primary shrink-0">
-              <Icon name="bookmark_added" className="text-[20px] sm:text-[22px]" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/50 bg-surface-container-low">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-on-primary">
+              <Icon name="bookmark_added" className="text-[22px]" />
             </span>
             <div className="min-w-0">
-              <h2 className="text-title-sm sm:text-title-md font-bold text-on-surface leading-tight truncate">Reserve Ingredient</h2>
-              <p className="text-xs sm:text-body-sm text-on-surface-variant truncate">{item.name}</p>
+              <h2 className="text-title-md font-title-md text-on-surface leading-tight truncate">Reserve Ingredient</h2>
+              <p className="text-body-sm font-body-sm text-on-surface-variant truncate">{item.name}</p>
             </div>
           </div>
           <button
-            className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
             onClick={onClose}
             aria-label="Close"
             type="button"
@@ -97,7 +97,7 @@ export default function ReserveModal({ open, item, onClose, onReserve, onClear, 
         </div>
 
         {/* Body */}
-        <div className="px-4 sm:px-6 py-4 sm:py-5 space-y-4 sm:space-y-5">
+        <div className="px-6 py-5 space-y-5">
           {/* Stock summary */}
           <div className="grid grid-cols-3 gap-2 text-center">
             <div className="rounded-lg bg-surface-container-low px-2 py-2.5">
@@ -181,19 +181,19 @@ export default function ReserveModal({ open, item, onClose, onReserve, onClear, 
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-outline-variant/50 bg-surface-container-low">
+        <div className="flex items-center justify-between gap-3 px-6 py-4 border-t border-outline-variant/50 bg-surface-container-low">
           {reserved > 0 ? (
             <button
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-secondary hover:bg-surface-container transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-secondary hover:bg-surface-container transition-colors"
               onClick={handleClear}
               type="button"
             >
-              <Icon name="bookmark_remove" className="text-[17px] sm:text-[18px]" />
+              <Icon name="bookmark_remove" className="text-[18px]" />
               Clear reservation
             </button>
           ) : (
             <button
-              className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-colors"
+              className="px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-on-surface-variant hover:bg-surface-container transition-colors"
               onClick={onClose}
               type="button"
             >
@@ -202,13 +202,13 @@ export default function ReserveModal({ open, item, onClose, onReserve, onClear, 
           )}
 
           <button
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-xs sm:text-title-sm font-semibold transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-title-sm font-title-sm transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
             onClick={handleReserve}
             disabled={!amountValid}
             type="button"
           >
-            <Icon name="bookmark_added" className="text-[16px] sm:text-[18px]" />
-            {reserved > 0 ? 'Update' : 'Reserve'}
+            <Icon name="bookmark_added" className="text-[18px]" />
+            {reserved > 0 ? 'Update reservation' : 'Reserve'}
           </button>
         </div>
       </div>

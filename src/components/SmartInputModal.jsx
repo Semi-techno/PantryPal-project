@@ -136,32 +136,32 @@ export default function SmartInputModal({ open, onClose, onSave }) {
       : { label: 'Detected: Product', icon: 'inventory_2', classes: 'bg-primary-fixed/50 text-primary' };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm" onClick={handleClose} aria-hidden="true" />
 
       {/* Dialog */}
       <div
-        className="relative z-10 w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col bg-surface rounded-t-2xl sm:rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
+        className="relative z-10 w-full max-w-2xl max-h-[90vh] flex flex-col bg-surface rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Smart Input - upload image"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-outline-variant/50 bg-surface-container-low">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary text-on-primary shrink-0">
-              <Icon name="auto_awesome" className="text-[20px] sm:text-[22px]" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/50 bg-surface-container-low">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-on-primary">
+              <Icon name="auto_awesome" className="text-[22px]" />
             </span>
             <div>
-              <h2 className="text-title-sm sm:text-title-md font-bold text-on-surface leading-tight">Smart Input</h2>
-              <p className="text-xs sm:text-body-sm text-on-surface-variant">
+              <h2 className="text-title-md font-title-md text-on-surface leading-tight">Smart Input</h2>
+              <p className="text-body-sm font-body-sm text-on-surface-variant">
                 Upload a photo — we auto-detect receipt or product and extract the items.
               </p>
             </div>
           </div>
           <button
-            className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
             onClick={handleClose}
             aria-label="Close"
             type="button"
@@ -171,7 +171,7 @@ export default function SmartInputModal({ open, onClose, onSave }) {
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5">
+        <div className="flex-1 overflow-y-auto px-6 py-5">
           {/* Step: idle — single upload area */}
           {phase === 'idle' && (
             <div className="space-y-4">
@@ -182,22 +182,22 @@ export default function SmartInputModal({ open, onClose, onSave }) {
                 }}
                 onDragLeave={() => setDragging(false)}
                 onDrop={onDrop}
-                className={`flex flex-col items-center justify-center text-center gap-3 w-full py-10 sm:py-16 px-4 sm:px-6 rounded-xl border-2 border-dashed cursor-pointer transition-colors ${
+                className={`flex flex-col items-center justify-center text-center gap-3 w-full py-16 px-6 rounded-xl border-2 border-dashed cursor-pointer transition-colors ${
                   dragging ? 'border-primary bg-primary-fixed/30' : 'border-outline-variant hover:border-primary/60 bg-surface-container-lowest'
                 }`}
               >
-                <span className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-tertiary-fixed text-primary">
-                  <Icon name="add_a_photo" className="text-[28px] sm:text-[32px]" />
+                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-tertiary-fixed text-primary">
+                  <Icon name="upload" className="text-[32px]" />
                 </span>
                 <div>
-                  <p className="text-title-sm font-bold text-on-surface">Upload Image (Receipt / Product)</p>
-                  <p className="text-xs sm:text-body-sm text-on-surface-variant mt-1">
-                    Tap to take photo or choose file. JPG, PNG or WEBP up to 10MB.
+                  <p className="text-title-sm font-title-sm text-on-surface">Upload Image (Receipt / Product)</p>
+                  <p className="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                    Drop a photo here or click to browse. JPG, PNG or WEBP up to 10MB.
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary text-xs sm:text-label-md font-semibold">
-                  <Icon name="auto_awesome" className="text-[15px]" />
-                  Auto-detect receipt or product
+                <span className="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary text-label-md font-label-md">
+                  <Icon name="auto_awesome" className="text-[16px]" />
+                  Auto-detect type
                 </span>
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={onFileInput} />
               </label>
@@ -258,21 +258,21 @@ export default function SmartInputModal({ open, onClose, onSave }) {
           {phase === 'review' && (
             <div className="space-y-4">
               {/* Type badge */}
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs sm:text-title-sm font-semibold ${badge.classes}`}>
-                  <Icon name={badge.icon} className="text-[16px] sm:text-[18px]" />
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-title-sm font-title-sm ${badge.classes}`}>
+                  <Icon name={badge.icon} className="text-[18px]" />
                   {badge.label}
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs sm:text-label-md text-on-surface-variant font-medium">
+                  <span className="text-label-md font-label-md text-on-surface-variant">
                     {validItems.length} item{validItems.length === 1 ? '' : 's'}
                   </span>
                   <button
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs sm:text-label-md text-on-surface border border-outline-variant/60 hover:bg-surface-container transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-label-md font-label-md text-on-surface border border-outline-variant/60 hover:bg-surface-container transition-colors"
                     onClick={reset}
                     type="button"
                   >
-                    <Icon name="cached" className="text-[15px]" />
+                    <Icon name="cached" className="text-[16px]" />
                     New image
                   </button>
                 </div>
@@ -285,59 +285,8 @@ export default function SmartInputModal({ open, onClose, onSave }) {
                 </p>
               )}
 
-              {/* Mobile review list (< sm) */}
-              <div className="sm:hidden space-y-2.5">
-                {items.length === 0 && (
-                  <div className="px-3 py-6 text-center text-xs text-on-surface-variant">
-                    No items. Click "Add item" to create one.
-                  </div>
-                )}
-                {items.map((it) => (
-                  <div key={it.id} className="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/60 space-y-2">
-                    <input
-                      className="w-full bg-surface-container-low px-2.5 py-1.5 rounded-lg text-xs font-medium text-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-primary-container"
-                      value={it.name}
-                      placeholder="Item name"
-                      onChange={(e) => updateItem(it.id, { name: e.target.value })}
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg">
-                        <span className="text-[11px] text-outline font-medium">Qty:</span>
-                        <input
-                          type="number"
-                          min="0"
-                          step="1"
-                          className="w-full bg-transparent text-xs font-semibold text-on-surface focus:outline-none text-center"
-                          value={it.quantity}
-                          onChange={(e) => updateItem(it.id, { quantity: e.target.value === '' ? '' : Number(e.target.value) })}
-                        />
-                      </div>
-                      <div className="flex-1 flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-lg">
-                        <span className="text-[11px] text-outline font-medium">$</span>
-                        <input
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          className="w-full bg-transparent text-xs font-semibold text-on-surface focus:outline-none text-right"
-                          value={it.price}
-                          onChange={(e) => updateItem(it.id, { price: e.target.value === '' ? '' : Number(e.target.value) })}
-                        />
-                      </div>
-                      <button
-                        className="w-8 h-8 flex items-center justify-center rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors"
-                        onClick={() => removeItem(it.id)}
-                        aria-label="Delete item"
-                        type="button"
-                      >
-                        <Icon name="delete" className="text-[17px]" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Desktop review table (sm and up) */}
-              <div className="hidden sm:block rounded-xl border border-outline-variant/50 overflow-hidden">
+              {/* Editable list */}
+              <div className="rounded-xl border border-outline-variant/50 overflow-hidden">
                 {/* Column headers */}
                 <div className="grid grid-cols-[1fr_72px_90px_40px] gap-2 px-3 py-2 bg-surface-container-low text-label-sm font-label-sm uppercase tracking-wider text-outline">
                   <span>Item Name</span>
@@ -394,7 +343,7 @@ export default function SmartInputModal({ open, onClose, onSave }) {
 
               {/* Add new item */}
               <button
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-label-md font-semibold text-primary border border-dashed border-outline-variant/70 hover:border-primary/60 hover:bg-surface-container-low transition-colors w-full justify-center"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-label-md font-label-md text-primary border border-dashed border-outline-variant/70 hover:border-primary/60 hover:bg-surface-container-low transition-colors w-full justify-center"
                 onClick={addItem}
                 type="button"
               >
@@ -406,9 +355,9 @@ export default function SmartInputModal({ open, onClose, onSave }) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-outline-variant/50 bg-surface-container-low">
+        <div className="flex items-center justify-between gap-3 px-6 py-4 border-t border-outline-variant/50 bg-surface-container-low">
           <button
-            className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-colors"
+            className="px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-on-surface-variant hover:bg-surface-container transition-colors"
             onClick={handleClose}
             type="button"
           >
@@ -417,12 +366,12 @@ export default function SmartInputModal({ open, onClose, onSave }) {
 
           {phase === 'review' && (
             <button
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-xs sm:text-title-sm font-semibold transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-title-sm font-title-sm transition-all active:scale-[0.98] shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
               onClick={handleSave}
               disabled={validItems.length === 0 || saving}
               type="button"
             >
-              <Icon name={saving ? 'progress_activity' : 'inventory'} className={`text-[16px] sm:text-[18px] ${saving ? 'animate-spin' : ''}`} />
+              <Icon name={saving ? 'progress_activity' : 'inventory'} className={`text-[18px] ${saving ? 'animate-spin' : ''}`} />
               {saving ? 'Saving...' : `Save ${validItems.length} to Inventory`}
             </button>
           )}

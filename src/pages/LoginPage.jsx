@@ -165,33 +165,33 @@ export default function LoginPage({ onLogin, onBack, initialMode = 'login' }) {
       <ShowcasePanel />
 
       {/* RIGHT: Authentication portal */}
-      <section className="w-full lg:w-[48%] xl:w-[45%] min-h-screen flex flex-col justify-between px-4 sm:px-12 md:px-16 lg:px-14 xl:px-20 py-6 sm:py-8 lg:py-10 bg-surface z-10 overflow-y-auto">
+      <section className="w-full lg:w-[48%] xl:w-[45%] flex flex-col justify-between px-6 sm:px-12 md:px-16 lg:px-14 xl:px-20 py-8 lg:py-10 bg-surface z-10 overflow-y-auto">
         {/* Top branding bar */}
-        <div className="flex items-center justify-between w-full mb-6 sm:mb-8">
+        <div className="flex items-center justify-between w-full mb-8">
           <a
             className="inline-flex items-center gap-2 group transition-transform duration-150 active:scale-[0.98]"
             href="#"
           >
-            <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary text-on-primary">
-              <Icon name="kitchen" className="text-[20px] sm:text-[24px]" />
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-on-primary">
+              <Icon name="kitchen" className="text-[24px]" />
             </span>
-            <span className="text-title-lg sm:text-headline-sm font-headline-sm text-primary font-bold">Pantry Pal</span>
+            <span className="text-headline-sm font-headline-sm text-primary">Pantry Pal</span>
           </a>
           {onBack ? (
             <button
-              className="text-label-sm sm:text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 bg-surface-container-low px-2.5 sm:px-3 py-1.5 rounded-full border border-outline-variant/40"
+              className="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/40"
               onClick={onBack}
               type="button"
             >
-              <Icon name="arrow_back" className="text-[14px] sm:text-[16px]" />
-              <span>Back<span className="hidden xs:inline"> to home</span></span>
+              <Icon name="arrow_back" className="text-[16px]" />
+              <span>Back to home</span>
             </button>
           ) : (
             <a
-              className="text-label-sm sm:text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 bg-surface-container-low px-2.5 sm:px-3 py-1.5 rounded-full border border-outline-variant/40"
+              className="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/40"
               href="#"
             >
-              <Icon name="help" className="text-[14px] sm:text-[16px]" />
+              <Icon name="help" className="text-[16px]" />
               <span>Support</span>
             </a>
           )}
@@ -593,7 +593,7 @@ export default function LoginPage({ onLogin, onBack, initialMode = 'login' }) {
         </div>
 
         {/* Footer */}
-        <div className="w-full pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-body-sm font-body-sm text-outline text-center sm:text-left">
+        <div className="w-full pt-4 flex flex-wrap justify-between items-center text-body-sm font-body-sm text-outline">
           <p>© 2026 Pantry Pal Technologies.</p>
           <div className="flex gap-4">
             <a className="hover:text-primary transition-colors" href="#">

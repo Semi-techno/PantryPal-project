@@ -66,24 +66,24 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       <div className="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
 
       <div
-        className="relative z-10 w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col bg-surface rounded-t-2xl sm:rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
+        className="relative z-10 w-full max-w-2xl max-h-[90vh] flex flex-col bg-surface rounded-xl shadow-2xl border border-outline-variant/50 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Recipe history"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-outline-variant/50 bg-surface-container-low">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary text-on-primary shrink-0">
-              <Icon name="history" className="text-[20px] sm:text-[22px]" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/50 bg-surface-container-low">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-on-primary">
+              <Icon name="history" className="text-[22px]" />
             </span>
             <div>
-              <h2 className="text-title-sm sm:text-title-md font-bold text-on-surface leading-tight">Recipe History</h2>
-              <p className="text-xs sm:text-body-sm text-on-surface-variant">
+              <h2 className="text-title-md font-title-md text-on-surface leading-tight">Recipe History</h2>
+              <p className="text-body-sm font-body-sm text-on-surface-variant">
                 {entries.length === 0
                   ? 'Recipes you generate will be logged here.'
                   : `${entries.length} recipe${entries.length === 1 ? '' : 's'} generated so far.`}
@@ -91,7 +91,7 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
             </div>
           </div>
           <button
-            className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
             onClick={onClose}
             aria-label="Close"
             type="button"
@@ -102,13 +102,13 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
 
         {/* Search (only when there's something to search) */}
         {entries.length > 0 && (
-          <div className="px-4 sm:px-6 pt-3 sm:pt-4">
+          <div className="px-6 pt-4">
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
                 <Icon name="search" className="text-[18px]" />
               </span>
               <input
-                className="w-full pl-10 pr-9 py-2 bg-surface-container-lowest border border-outline-variant/70 rounded-lg text-xs sm:text-body-md text-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-colors"
+                className="w-full pl-10 pr-9 py-2.5 bg-surface-container-lowest border border-outline-variant/70 rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-colors"
                 placeholder="Search past recipes by name or ingredient..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
@@ -128,7 +128,7 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
         )}
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5">
+        <div className="flex-1 overflow-y-auto px-6 py-5">
           {/* Empty state */}
           {entries.length === 0 && (
             <div className="flex flex-col items-center justify-center text-center gap-4 py-14">
@@ -199,19 +199,19 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-outline-variant/50 bg-surface-container-low">
+        <div className="flex items-center justify-between gap-3 px-6 py-4 border-t border-outline-variant/50 bg-surface-container-low">
           {entries.length > 0 ? (
             <button
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-secondary hover:bg-surface-container transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-secondary hover:bg-surface-container transition-colors"
               onClick={handleClearAll}
               type="button"
             >
-              <Icon name="delete_sweep" className="text-[17px] sm:text-[18px]" />
+              <Icon name="delete_sweep" className="text-[18px]" />
               Clear history
             </button>
           ) : (
             <button
-              className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-title-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-colors"
+              className="px-4 py-2.5 rounded-lg text-title-sm font-title-sm text-on-surface-variant hover:bg-surface-container transition-colors"
               onClick={onClose}
               type="button"
             >
@@ -220,14 +220,14 @@ export default function RecipeHistoryModal({ open, onClose, onGenerate, refreshK
           )}
 
           <button
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-xs sm:text-title-sm font-semibold transition-all active:scale-[0.98] shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary text-title-sm font-title-sm transition-all active:scale-[0.98] shadow-sm"
             onClick={() => {
               onClose?.();
               onGenerate?.();
             }}
             type="button"
           >
-            <Icon name="auto_awesome" className="text-[16px] sm:text-[18px]" />
+            <Icon name="auto_awesome" className="text-[18px]" />
             Generate new
           </button>
         </div>
